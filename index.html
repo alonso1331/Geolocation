@@ -67,7 +67,7 @@
             navigator.geolocation.watchPosition((position) => {
                 // 緯度, 經度
                 // position.coords.latitude, position.coords.longitude;
-                console.log(position);
+                // console.log(position);
 
                 // 移動角度 deg
                 const deg = position.coords.heading;
@@ -75,8 +75,9 @@
                 compass.style.transform = `rotate(${deg}deg)`;
     
                 // 移動速度 m/s
-                const speeds = position.coords.speed;
-                // speeds = 10;
+                const speeds = position.coords.speed.toFixed(2);
+                // speeds = 10.4580.toFixed(2);
+                // console.log(speeds);
                 speed.innerHTML = `${speeds}`;
 
             });
@@ -88,7 +89,7 @@
             // });
         } else {
             // 取消觀察者位置
-            navigator.geolocation.clearWatch(watchID);
+            navigator.geolocation.clearWatch();
         }
     </script>
 </body>
